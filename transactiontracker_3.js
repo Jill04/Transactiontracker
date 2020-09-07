@@ -21,7 +21,7 @@ function getTransactionsByAccount( startBlockNumber, endBlockNumber) {
                          if (tx != null) {
                             if(!tx.status)
                                 {
-                                    console.log({address: tx.transactionHash,block:tx.blockNumber,timestamp: new Date()});
+                                    console.log({transactionHash: tx.transactionHash,block:tx.blockNumber,timestamp: new Date()});
                                 }
                             }
                         

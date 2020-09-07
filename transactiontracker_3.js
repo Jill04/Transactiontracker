@@ -15,23 +15,19 @@ function getTransactionsByAccount( startBlockNumber, endBlockNumber) {
           
                for( var j=0;j<=data.transactions.length;j++)
                {
-                   if (typeof data.transactions[j] == 'undefined' ) {
-                       continue
-                   }
-                let tx = await web3.eth.getTransactionReceipt(data.transactions[j]);
-               
-                if (tx != null) {
-                   
-                           if(!tx.status)
-                           {
-                               console.log({address: tx.transactionHash,block:tx.blockNumber,timestamp: new Date()});
+                   if (typeof data.transactions[j] != 'undefined' ) 
+                   {
+                        let tx = await web3.eth.getTransactionReceipt(data.transactions[j]);
+                         if (tx != null) {
+                            if(!tx.status)
+                                {
+                                    console.log({address: tx.transactionHash,block:tx.blockNumber,timestamp: new Date()});
+                                }
                             }
-                        }
-                
-               }
-           }).catch((err) => {
-               console.log(err)
-           });
+                        
+                     }
+             }
+        }).catch((err) => {console.log(err)});
         
     }
 
@@ -39,3 +35,4 @@ function getTransactionsByAccount( startBlockNumber, endBlockNumber) {
 
 
 getTransactionsByAccount(8603562,8603565);
+

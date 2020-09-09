@@ -1,7 +1,8 @@
 var Web3 = require('web3');
 var Contract= require("./Contract.json");
-var web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/138d2f36cef2452eaaf06661bfd22344"));
-var web3ws = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws/v3/138d2f36cef2452eaaf06661bfd22344'));
+var projectkey ' YOUR PROJECT ID';
+web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/'+projectkey ));
+var web3ws = new Web3(new Web3.providers.WebsocketProvider('wss://ropsten.infura.io/ws/v3/'+projectkey));
 web3.eth.defaultAccount = web3.eth.accounts[0];
 var dapp= new web3.eth.Contract(Contract,'0x3c87eC4dff2B1AB4eEC5627Cea87BE2F0f829A19');
 var account = '0x03326793A092136609Df7Ae47CB160aa85c39BBa'.toLowerCase();

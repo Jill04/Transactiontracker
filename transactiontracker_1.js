@@ -9,24 +9,19 @@ var subscription = web3ws.eth.subscribe('pendingTransactions', (err, res) => {
 
     
     
- console.log('Watching all transactions...');
+console.log('Watching all transactions...');
         subscription.on('data', (txHash) => {
             setTimeout(async () => {
                 try {
                     let tx = await web3.eth.getTransactionReceipt(txHash);
                     if (tx != null) {
                         if (account == tx.from.toLowerCase()) {
-                               if(!tx.status)
-                               {
-                                   console.log({address: tx.from,block:tx.blockNumber,timestamp: new Date()});
-                                }
-
-                        }
-                       
-                    }
+                                  console.log({blockHash:tx.blockHash,blockNumber:tx.blockNumber,gasUsed:tx.gasUsed,status:tx.status,transactionHash: tx.transactionHash,timestamp: new Date(),to:tx.to});
+                            }
+                       }
                 } catch (err) {
                     console.error(err);
                 }
             }, 60000)
         });
-    
+
